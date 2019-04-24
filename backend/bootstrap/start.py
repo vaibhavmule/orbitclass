@@ -35,6 +35,7 @@ def app(environ, start_response):
 
     try:
         for provider in container.make('WSGIProviders'):
+            print(provider)
             container.resolve(provider.boot)
     except Exception as e:
         container.make('ExceptionHandler').load_exception(e)

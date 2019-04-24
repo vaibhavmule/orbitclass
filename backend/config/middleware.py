@@ -1,6 +1,6 @@
 """Middleware Configuration Settings."""
 
-from masonite.middleware import ResponseMiddleware, MaintenanceModeMiddleware
+from masonite.middleware import ResponseMiddleware, MaintenanceModeMiddleware, CorsMiddleware
 
 from app.http.middleware.AuthenticationMiddleware import \
     AuthenticationMiddleware
@@ -15,10 +15,11 @@ should contain a simple aggregate of middleware classes.
 """
 
 HTTP_MIDDLEWARE = [
+    CorsMiddleware,
     LoadUserMiddleware,
-    CsrfMiddleware,
+    # CsrfMiddleware,
     ResponseMiddleware,
-    MaintenanceModeMiddleware,
+    # MaintenanceModeMiddleware,
 ]
 
 """Route Middleware
@@ -30,4 +31,12 @@ of middleware (middleware stacks).
 ROUTE_MIDDLEWARE = {
     'auth': AuthenticationMiddleware,
     'verified': VerifyEmailMiddleware,
+}
+
+CORS = {
+    'Access-Control-Allow-Origin': "*",
+    "Access-Control-Allow-Methods": "DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT",
+    "Access-Control-Allow-Headers": "Content-Type, Accept, X-Requested-With",
+    "Access-Control-Max-Age": "3600",
+    "Access-Control-Allow-Credentials": "true"
 }
