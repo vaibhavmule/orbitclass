@@ -4,9 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-masonite = "<2.2.0,>=2.1.0"
+masonite = ">=2.1.0,<2.2.0"
+"psycopg2-binary" = "*"
+pyjwt = "*"
+masonite-api = "*"
 
 [dev-packages]
+pylint = "*"
+masonite-cli = "*"
 
 [requires]
 python_version = "3.7"
